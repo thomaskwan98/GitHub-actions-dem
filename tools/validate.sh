@@ -10,7 +10,7 @@
 # /*                                                             */
 # /***************************************************************/
 
-set -e
+# set -e
 
 root=`dirname ${BASH_SOURCE[0]}`
 benchmarks=${root}/../benchmarks
