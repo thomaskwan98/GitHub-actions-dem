@@ -144,9 +144,36 @@ void handle_pseudo_inst(
 		/*
 		 * LA is translated to lui and addi.
 		 */
-		/* Lab2-1 assignment */
-		warn("Lab2-1 assignment: LA instruction\n");
-		exit(EXIT_FAILURE);
+		char temp1[MAX_LINE_LENGTH + 1], temp2[MAX_LINE_LENGTH + 1];
+		int i = 0;
+		/*
+		 * lui is performed first.
+		 * the offset is a 20-bit higher number.
+		 */
+		fprintf(
+			output_file,
+			"0x%08x\n",
+			inst_to_binary(line_no, cmd_no, "lui", arg1, arg2, arg3, label_table)
+		);
+		while (arg1[i] != '\0') {
+			temp1[i] = arg1[i];
+			i++;
+		}
+		temp1[i] = '\0';
+		/*
+		 * addi is performed first.
+		 * the offset is a 12-bit lower number.
+		 */
+		sprintf(
+			temp2,
+			"%d",
+			(handle_label_or_imm(arg2, label_table, cmd_no, line_no)) & 0xFFF
+		);
+		fprintf(
+			output_file,
+			"0x%08x\n",
+			inst_to_binary(line_no, cmd_no, "addi", arg1, temp1, temp2, label_table)
+		);
 	} else if (is_opcode(opcode) == FILL) {
 		fprintf(output_file, "0x%08x\n", validate_imm(arg1, 31, line_no));
 	} else if (is_opcode(opcode) == HALT) {

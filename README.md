@@ -1,7 +1,7 @@
 # ceng3420
 CUHK CENG3420 course labs
 
-## Lab 2-1: Finish the RV32I assembler including 26+ instructions as follows
+## Lab 2-1: Finish the RV32I assembler including 26+ instructions in `asm.c` as follows
 * Pseudo instruction: la
 * Integer Register-Immediate Instructions:
             slli, xori, srli, srai, ori, andi, lui
@@ -15,3 +15,7 @@ CUHK CENG3420 course labs
             lb, lh, lw, sb, sh, sw
 
 For more info., please refer to the slides: http://www.cse.cuhk.edu.hk/~byu/CENG3420/2022Spring/index.html
+
+## History
+* Feb. 27, 2022: Remove `LA` assignment
+* Feb. 23, 2022: Lab 2-1 is released
