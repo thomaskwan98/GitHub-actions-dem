@@ -307,7 +307,7 @@ int inst_to_binary(
 		int offset;
 		offset = label_to_num(arg3, 12, label_table, cmd_no, line_no);
 		// imm[11]
-		binary += ((offset & 0x800) << 4);
+		binary += ((offset & 0x800) >> 4);
 		// imm[4:1]
 		binary += ((offset & 0x1E) << 7);
 		// imm[10:5]
