@@ -35,8 +35,8 @@ do
 	diff ${benchmark%.*}.bin ${output} >> ${report}
 done
 
-result=`wc -l ${report} | cut -d ' '  -f 8`
-if [[ `wc -l ${report} | cut -d ' '  -f 8` == 6 ]]
+grep '<' ${report} > /dev/null 2>&1
+if [[  $? == 1 ]]
 then
 	echo -e "[INFO]: You have passed the Lab.\n"
 else
