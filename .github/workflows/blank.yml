@@ -1,16 +1,21 @@
-name: Greeting from Kwan Long Kin
-on: push
-
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  
+  
 jobs:
-my-job:
-name: My Job
-runs-on: ubuntu-latest
-steps:
-- name: Print a greeting
-  env:
-    MY_VAR: Hi there! My name is
-    FIRST_NAME: Mona
-    MIDDLE_NAME: The
-    LAST_NAME: Octocat
-run: |
-    echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  build:
+    run-on: ubuntu-latest
+    steps:
+      -uses: actions/checkout@v2
+      -name: Run a one-line script
+        run: echo "Hello World!"
+      -name: Run a multi-line script
+        run: |
+          echo" Add other actions"
+          echo" Test and deploy"  
+            
